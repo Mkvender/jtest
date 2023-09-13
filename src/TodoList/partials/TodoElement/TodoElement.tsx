@@ -7,11 +7,16 @@ type TodoElementType = {
   onEdit: (element: todoElement) => void;
 };
 
-export const TodoElement: React.FC<TodoElementType> = ({ id, description }) => {
+export const TodoElement: React.FC<TodoElementType> = (
+  todoElement: todoElement,
+  onDelete: (id: number) => void,
+  onEdit: (element: todoElement) => void
+) => {
   return (
-    <li key={id}>
-      <p>{description}</p>
-      <button></button>
+    <li key={todoElement.id}>
+      <button onClick={() => onEdit}>Eliminar Tarea</button>
+      <p>{todoElement.description}</p>
+      <button onClick={() => onDelete}>Eliminar Tarea</button>
     </li>
   );
 };

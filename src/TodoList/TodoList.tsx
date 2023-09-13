@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ChangeEvent, useState } from "react";
 import type { RootState } from "../components/store/store";
 import { useSelector, useDispatch } from "react-redux";
 import { TodoElement } from "./partials/TodoElement/TodoElement";
@@ -10,6 +10,7 @@ import {
 } from "../TodoList/partials/todoslice";
 
 export const TodoList: React.FC = () => {
+  const [description, setDescription] = useState("");
   const allTodo = useSelector((state: RootState) => state.toDo.listTodo);
   const dispatch = useDispatch();
 
@@ -25,6 +26,10 @@ export const TodoList: React.FC = () => {
     dispatch(addTodo(todo));
   };
 
+  const onChangeDescription = (e: ChangeEvent<HTMLInputElement>) => {
+    setDescription(e.target.value);
+  };
+
   return (
     <div>
       {allTodo.map((todo) => (
@@ -32,9 +37,10 @@ export const TodoList: React.FC = () => {
       ))}
       <div>
         <label>Description</label>
-        <input type="text" />
-        <button onClick={onAdd}>Add ToDo</button>
+        <input type="text" onChange={onChangeDescription} />
+        <button onClick={() => onAdd}>Add ToDo</button>
       </div>
+      <h3>{description}</h3>
     </div>
   );
 };

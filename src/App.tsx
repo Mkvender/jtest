@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import { WordReverseOrder } from "./components/WordReversOrder";*/
 import "./App.css";
 import { store } from "./components/store/store";
+import { TodoList } from "./TodoList/TodoList";
 
 /* import {
   InputContexProvider,
