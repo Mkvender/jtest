@@ -4,6 +4,7 @@ import todoReducer from "../../TodoList/partials/todoslice";
 export const store = configureStore({
   reducer: {
     toDo: todoReducer,
+    name: nameReducer,
   },
 });
 
